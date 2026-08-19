@@ -18,7 +18,7 @@ After that, interact with the agent normally. You should not need to repeatedly 
 
 ## What Token Saver does
 
-Token Saver combines five complementary ideas/tools, while keeping your actual project files, source code, tests and Git state authoritative:
+Token Saver combines five complementary ideas/tools, while keeping your actual project files, source code, tests, project instructions, and current version-control/workspace state authoritative:
 
 | Layer | First reference | Best for |
 |---|---|---|
@@ -49,7 +49,7 @@ This prevents collisions such as RTK output being compressed again by Entroly, o
 
 **Optimization never overrides correctness.**
 
-Source being edited, exact diffs, security-sensitive evidence, test failures, machine-readable gates and current Git state must remain exact whenever the decision depends on their exact contents.
+Source being edited, exact diffs/changesets, security-sensitive evidence, test failures, machine-readable gates and current version-control/workspace state must remain exact whenever the decision depends on their exact contents.
 
 If any optional provider is missing, stale, unsupported or unsuitable, the agent simply falls back to normal targeted search/read/build/test commands.
 
@@ -59,6 +59,7 @@ If any optional provider is missing, stale, unsupported or unsuitable, the agent
 token-saver/
 ├── AGENT.md
 ├── README.md
+├── CONTRIBUTING.md
 ├── INIT_PROMPT.txt
 ├── OPTIONAL_PROJECT_STUB.md
 ├── THIRD_PARTY.md
@@ -75,9 +76,17 @@ There is intentionally **no nested `agent-efficiency-pack` directory**. `token-s
 
 ## Large C/C++ projects
 
-The `code-intelligence` layer is especially useful on large C/C++ repositories: structural indexing can locate symbols, implementations, callers, inheritance relationships and blast radius before the agent reads source. If SCIP/clang-derived reference data already exists, it may optionally improve accuracy.
+The `code-intelligence` layer is especially useful on large C/C++ codebases: structural indexing can locate symbols, implementations, callers, inheritance relationships and blast radius before the agent reads source. If SCIP/clang-derived reference data already exists, it may optionally improve accuracy.
 
 The index is still not live truth: stale or incomplete results must fall back to current native source/search.
+
+## Contributions welcome
+
+Token Saver is intended to improve through real developer usage.
+
+Contributions are welcome for better routing rules, additional toolchains/languages, measurable token/context savings, safer fallback behavior, and new reference providers. A proposed new tool should ideally fill a **distinct surface** rather than duplicate an existing layer.
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the design principles and what makes a useful addition.
 
 ## Licensing
 
