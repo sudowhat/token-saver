@@ -2,6 +2,27 @@
 
 A small, vendor-neutral efficiency pack for AI coding agents working on **large codebases**.
 
+## 5-second view
+
+```text
+                         TOKEN SAVER
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+        ↓                     ↓                     ↓
+   Historical            Current code          CLI output
+   knowledge              structure             / logs
+        │                     │                     │
+        ↓                     ↓                     ↓
+  Semantic memory       Code intelligence       RTK-style
+   (Supermemory)          (jCodeMunch)          optimization
+
+Large general context  ───────────────→  Context assurance (Entroly)
+Exact/canonical evidence ─────────────→  RAW / untouched
+```
+
+The rule is simple: **use one appropriate optimization/intelligence layer for each context surface, and leave exact engineering evidence exact.**
+
 Clone this repository directly into your home directory:
 
 ```bash
