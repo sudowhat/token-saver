@@ -1,6 +1,6 @@
 # Token Saver — Portable Agent Bootstrap
 
-Token Saver is an **optimization layer** for an existing software project. It does not replace the target project's own agent protocol, architecture, build rules, tests, or Git workflow.
+Token Saver is an **optimization layer** for a software project using AI tools. It does not replace the target project's own agent protocol/skills, architecture, build rules, tests, or existing versioning system workflow.
 
 ## Initialization
 
