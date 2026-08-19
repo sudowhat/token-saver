@@ -1,0 +1,1 @@
+Read ~/token-saver/AGENT.md and initialize this project. Then continue to follow it for this session.
