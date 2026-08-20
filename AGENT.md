@@ -24,6 +24,12 @@ Paths above are relative to this `AGENT.md`, not to the target project.
 
 > **Retrieve narrowly. Remember semantically. Navigate code structurally. Compress each surface once. Verify canonically.**
 
+> **Complements, never collides.**
+
+Token Saver is subordinate to the host project's own rules. If a Token Saver capability conflicts with an authoritative project instruction, suppress **only that conflicting capability** and use the project's native workflow for that surface. Do not disable unrelated Token Saver capabilities merely because one conflicts.
+
+When it is unclear whether an optimization conflicts with a project rule, yield to the project/native path.
+
 ## Surface router
 
 Use exactly one appropriate layer per surface:
@@ -53,18 +59,40 @@ source being edited / exact diff / gate  -> RAW
 
 When instructions conflict:
 
-1. explicit current user instruction;
-2. correctness, safety, security, privacy, and data integrity;
-3. authoritative target-project instructions and current live project/workspace state;
-4. exact source code, tests, build configuration, current version-control state/history, and current project documentation;
-5. optional memory/index/context hints;
-6. token/output efficiency.
+1. host/system safety and execution constraints;
+2. explicit current user instruction;
+3. correctness, safety, security, privacy, and data integrity;
+4. authoritative target-project instructions and current live project/workspace state;
+5. exact source code, tests, build configuration, current version-control state/history, and current project documentation;
+6. Token Saver policy;
+7. optional provider defaults, memory/index/context hints;
+8. token/output efficiency.
 
 Optimization never authorizes weaker evidence.
 
+## Conflict suppression
+
+Apply conflicts narrowly:
+
+```text
+Token Saver capability requested
+        ↓
+Check host/project constraints
+        ↓
+No conflict  -> use capability normally
+Conflict     -> suppress only that capability -> native project path
+Uncertain    -> native project path
+```
+
+Examples:
+
+- Project forbids external MCP servers -> suppress MCP-backed providers; keep unrelated local Token Saver behavior.
+- Project requires security-sensitive source to be read directly -> structural tools may locate the code only if allowed; exact live source still decides.
+- Project forbids external semantic memory -> suppress that memory provider and use project-native history/search.
+
 ## Graceful degradation
 
-The target project must remain fully usable when any optional provider is absent, stale, incomplete, unlicensed, misconfigured, unsupported, or unavailable to the current host.
+The target project must remain fully usable when any optional provider is absent, stale, incomplete, unlicensed, misconfigured, unsupported, conflicting, or unavailable to the current host.
 
 Fallback is always the project's normal native search/read/build/test workflow.
 
