@@ -1,0 +1,15 @@
+changelog:
+  categories:
+    - title: New capabilities
+      labels:
+        - enhancement
+    - title: Fixes and safety
+      labels:
+        - bug
+        - security
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Other changes
+      labels:
+        - '*'
