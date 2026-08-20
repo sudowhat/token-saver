@@ -1,0 +1,52 @@
+{
+  "name": "@sudowhat/token-saver",
+  "version": "0.1.0",
+  "description": "Portable, vendor-neutral efficiency layer for AI coding agents working on large software projects.",
+  "type": "module",
+  "bin": {
+    "token-saver": "bin/token-saver.mjs"
+  },
+  "files": [
+    "AGENT.md",
+    "README.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "INIT_PROMPT.txt",
+    "OPTIONAL_PROJECT_STUB.md",
+    "THIRD_PARTY.md",
+    "LICENSE",
+    "bin",
+    "skills",
+    "install.sh",
+    "install.ps1"
+  ],
+  "scripts": {
+    "test": "node bin/token-saver.mjs self-test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "context",
+    "token-saving",
+    "developer-tools",
+    "agents",
+    "mcp"
+  ],
+  "license": "MIT",
+  "author": "sudowhat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudowhat/token-saver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudowhat/token-saver/issues"
+  },
+  "homepage": "https://github.com/sudowhat/token-saver#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}
