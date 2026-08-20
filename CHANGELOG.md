@@ -8,6 +8,13 @@ Token Saver follows [Semantic Versioning](https://semver.org/):
 - **MINOR** — backward-compatible capabilities, skills, providers, or toolchain support.
 - **MAJOR** — incompatible bootstrap, CLI, routing, or precedence changes.
 
+## [Unreleased]
+
+### Documentation
+- Marked npm/npx as the recommended managed-install path.
+- Documented optional global CLI installation and normal update flow.
+- Recorded successful clean external-user installation of `@sudowhat/token-saver@0.1.0`.
+
 ## [0.1.0] - 2026-08-20
 
 ### Added
