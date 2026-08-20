@@ -1,9 +1,13 @@
 # Token Saver
 
+[![npm version](https://img.shields.io/npm/v/@sudowhat/token-saver.svg)](https://www.npmjs.com/package/@sudowhat/token-saver)
+
 A small, vendor-neutral efficiency pack for AI coding agents working on **large codebases**.
 
 > **Use less context. Keep the engineering signal.**  
 > **Complements, never collides.**
+
+Current stable release: **`@sudowhat/token-saver@0.1.0`** — published on npm and validated through a clean external-user install.
 
 ## 5-second view
 
@@ -28,9 +32,11 @@ The rule is simple: **use one appropriate optimization/intelligence layer for ea
 
 ## Install
 
-Choose any supported method. They all target `~/token-saver`.
+All supported managed-install methods target `~/token-saver`.
 
-### npm / npx
+### Recommended: npm / npx
+
+No global install is required:
 
 ```bash
 npx @sudowhat/token-saver@latest install
@@ -46,6 +52,15 @@ bunx @sudowhat/token-saver@latest install
 
 ```bash
 pnpm dlx @sudowhat/token-saver@latest install
+```
+
+### Permanent CLI (optional)
+
+If you prefer a globally available `token-saver` command:
+
+```bash
+npm install -g @sudowhat/token-saver@latest
+token-saver install
 ```
 
 ### curl (macOS / Linux)
@@ -92,6 +107,13 @@ For Bun:
 
 ```bash
 bunx @sudowhat/token-saver@latest update
+```
+
+For a globally installed CLI:
+
+```bash
+npm install -g @sudowhat/token-saver@latest
+token-saver update
 ```
 
 For curl/PowerShell installs, rerun the same installer command. Managed installers refuse to overwrite locally changed Token Saver files unless an explicit force path is used.
@@ -171,7 +193,7 @@ MINOR  backward-compatible skills, providers or capabilities
 MAJOR  incompatible bootstrap, CLI, routing or precedence changes
 ```
 
-Every release should keep these aligned:
+Every release keeps these aligned:
 
 ```text
 package.json version
