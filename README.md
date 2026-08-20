@@ -2,6 +2,9 @@
 
 A small, vendor-neutral efficiency pack for AI coding agents working on **large codebases**.
 
+> **Use less context. Keep the engineering signal.**  
+> **Complements, never collides.**
+
 ## 5-second view
 
 ```text
@@ -23,19 +26,88 @@ Exact/canonical evidence ─────────────→  RAW / untou
 
 The rule is simple: **use one appropriate optimization/intelligence layer for each context surface, and leave exact engineering evidence exact.**
 
-Clone this repository directly into your home directory:
+## Install
+
+Choose any supported method. They all target `~/token-saver`.
+
+### npm / npx
+
+```bash
+npx @sudowhat/token-saver@latest install
+```
+
+### Bun
+
+```bash
+bunx @sudowhat/token-saver@latest install
+```
+
+### pnpm
+
+```bash
+pnpm dlx @sudowhat/token-saver@latest install
+```
+
+### curl (macOS / Linux)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sudowhat/token-saver/main/install.sh | sh
+```
+
+The curl installer downloads the latest GitHub Release and verifies its SHA-256 checksum before installing.
+
+### PowerShell
+
+```powershell
+irm https://raw.githubusercontent.com/sudowhat/token-saver/main/install.ps1 | iex
+```
+
+### Git / another version-control checkout
 
 ```bash
 git clone https://github.com/sudowhat/token-saver ~/token-saver
 ```
 
-Then, from any project, give a new agent this as the first instruction:
+If `~/token-saver` is a Git checkout, Token Saver installers deliberately refuse to overwrite it; update it through its version-control workflow instead.
+
+## Start an agent
+
+From any AI-assisted software project, give a new agent this as its first instruction:
 
 ```text
 Read ~/token-saver/AGENT.md and initialize this project. Then continue to follow it for this session.
 ```
 
 After that, interact with the agent normally. You should not need to repeatedly tell it which optimization tool to use.
+
+## Update normally
+
+For npm/npx installations:
+
+```bash
+npx @sudowhat/token-saver@latest update
+```
+
+For Bun:
+
+```bash
+bunx @sudowhat/token-saver@latest update
+```
+
+For curl/PowerShell installs, rerun the same installer command. Managed installers refuse to overwrite locally changed Token Saver files unless an explicit force path is used.
+
+Useful CLI commands:
+
+```text
+token-saver install
+token-saver update
+token-saver doctor
+token-saver version
+token-saver print-init
+token-saver uninstall
+```
+
+The short `token-saver ...` form is available when the npm package is installed globally. With `npx`/`bunx`, prefix the command with the corresponding runner.
 
 ## What Token Saver does
 
@@ -51,9 +123,24 @@ Token Saver combines five complementary ideas/tools, while keeping your actual p
 
 The external tools are **optional and are not bundled in this repository**.
 
-## Routing rule
+## Complements, never collides
 
-The agent should use only one layer for each context surface:
+Token Saver is a compatibility/optimization layer, not a replacement agent framework.
+
+**Project rules win.** If one Token Saver capability conflicts with an authoritative host-project rule, the agent suppresses only that capability and falls back to the project's native workflow for that surface. Unrelated Token Saver capabilities may continue normally.
+
+Conflicts are reduced by design because:
+
+- project instructions are read before Token Saver optimization is applied;
+- each context surface has one optimization/intelligence owner;
+- external providers are optional;
+- exact/canonical engineering evidence has a RAW path;
+- every optional provider has a native fallback;
+- Token Saver does not require a specific AI vendor, IDE, MCP host, external tool, or version-control system.
+
+Token Saver cannot technically guarantee that every AI host will implement instruction precedence perfectly, so the policy is deliberately conservative: **when uncertain, yield to the project/native path.**
+
+## Routing rule
 
 ```text
 exact / canonical / gate evidence        -> RAW / native exact path
@@ -72,7 +159,29 @@ This prevents collisions such as RTK output being compressed again by Entroly, o
 
 Source being edited, exact diffs/changesets, security-sensitive evidence, test failures, machine-readable gates and current version-control/workspace state must remain exact whenever the decision depends on their exact contents.
 
-If any optional provider is missing, stale, unsupported or unsuitable, the agent simply falls back to normal targeted search/read/build/test commands.
+If any optional provider is missing, stale, unsupported, unsuitable or conflicting, the agent falls back to normal targeted search/read/build/test commands.
+
+## Releases and versioning
+
+Token Saver follows Semantic Versioning:
+
+```text
+PATCH  fixes / safety / installer corrections
+MINOR  backward-compatible skills, providers or capabilities
+MAJOR  incompatible bootstrap, CLI, routing or precedence changes
+```
+
+Every release should keep these aligned:
+
+```text
+package.json version
+Git tag vX.Y.Z
+npm @sudowhat/token-saver@X.Y.Z
+GitHub Release vX.Y.Z
+CHANGELOG.md
+```
+
+See [`CHANGELOG.md`](CHANGELOG.md) for human-readable release notes.
 
 ## Repository layout
 
@@ -81,6 +190,11 @@ token-saver/
 ├── AGENT.md
 ├── README.md
 ├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── package.json
+├── bin/token-saver.mjs
+├── install.sh
+├── install.ps1
 ├── INIT_PROMPT.txt
 ├── OPTIONAL_PROJECT_STUB.md
 ├── THIRD_PARTY.md
@@ -106,6 +220,8 @@ The index is still not live truth: stale or incomplete results must fall back to
 Token Saver is intended to improve through real developer usage.
 
 Contributions are welcome for better routing rules, additional toolchains/languages, measurable token/context savings, safer fallback behavior, and new reference providers. A proposed new tool should ideally fill a **distinct surface** rather than duplicate an existing layer.
+
+New token-saving tools enter the pack only when they **complement rather than collide** with existing Token Saver layers and the host project's own rules.
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the design principles and what makes a useful addition.
 
