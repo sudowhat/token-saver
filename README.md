@@ -7,6 +7,8 @@ A small, vendor-neutral efficiency pack for AI coding agents working on **large 
 > **Use less context. Keep the engineering signal.**  
 > **Complements, never collides.**
 
+Current stable release: **`@sudowhat/token-saver@0.1.0`** — published on npm and validated through a clean external-user install. Next intended MINOR is **0.2.0** (see `CHANGELOG.md` Unreleased).
+
 ## 5-second view
 
 ```text
@@ -189,7 +191,7 @@ A jCodeMunch planner/context assembler may optimize operations **inside the code
 
 ### Evidence without marketing inflation
 
-jCodeMunch currently publishes a reproducible benchmark reporting **96.4% fewer code-retrieval tokens** than its grep-top-3 baseline across 15 task runs, plus a separate production-codebase A/B report with smaller tool-layer savings. Token Saver treats those as provider-specific retrieval evidence—not as a promise that every complete coding session will be 96.4% cheaper.
+jCodeMunch currently publishes a reproducible benchmark reporting **96.4% fewer code-retrieval tokens** than its grep-top-3 baseline across 15 task runs (per-query results vary widely; see upstream methodology), plus a separate production-codebase A/B report with smaller tool-layer savings. Token Saver treats those as provider-specific retrieval evidence—not as a promise that every complete coding session will be 96.4% cheaper.
 
 See the current upstream README/benchmark methodology for exact versions, caveats and reproducibility details: https://github.com/jgravelle/jcodemunch-mcp
 

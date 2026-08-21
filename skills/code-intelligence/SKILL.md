@@ -108,7 +108,7 @@ jCodeMunch targeted code -> another compressor -> model
 
 Treat provider token-saving benchmarks as **code-retrieval evidence, not universal whole-session guarantees**.
 
-jCodeMunch currently publishes a reproducible benchmark reporting 96.4% fewer retrieval tokens than its grep-top-3 baseline across 15 task runs, while its separate production-codebase A/B report shows smaller tool-layer savings. Use the methodology/caveats from the installed/current upstream release and measure the target workload when savings matter operationally.
+jCodeMunch currently publishes a reproducible benchmark reporting 96.4% fewer retrieval tokens than its grep-top-3 baseline across 15 task runs (per-query multiples vary widely; upstream asks readers to consult the range and methodology, not the average alone). Its separate production-codebase A/B report shows smaller tool-layer savings. Use the methodology/caveats from the installed/current upstream release and measure the target workload when savings matter operationally.
 
 Do not turn benchmark marketing numbers into Token Saver guarantees.
 

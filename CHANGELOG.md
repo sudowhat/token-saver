@@ -14,7 +14,7 @@ Token Saver follows [Semantic Versioning](https://semver.org/):
 
 ### Code intelligence
 - Expanded the code-intelligence contract to cover structural relationships, blast radius, changed-symbol mapping, bounded code-context assembly, risk/refactoring preflight and freshness/coverage metadata.
-- Promoted jCodeMunch from a simple symbol-retrieval reference to the primary reference provider for Token Saver's current-code structural surface.
+- Expanded jCodeMunch guidance from symbol-oriented retrieval into the full current-code structural contract while keeping it the first optional reference provider for that surface.
 - Added an explicit provider boundary: jCodeMunch planners/context assemblers may optimize the code-intelligence surface but do not take over Token Saver's cross-surface routing.
 - Added exact-source guidance for cases where live bytes, whole-file ordering, generated/configuration content, security evidence, parser limits or patch context are material.
 - Added a benchmark-scope rule: provider retrieval savings must not be presented as universal whole-session savings.
