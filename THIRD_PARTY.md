@@ -10,10 +10,16 @@ Semantic-memory reference provider.
 - GitHub: https://github.com/supermemoryai/supermemory
 
 ## jCodeMunch MCP
-Code-intelligence reference provider.
+Primary code-intelligence reference provider.
 
 - GitHub: https://github.com/jgravelle/jcodemunch-mcp
-- Important: verify current upstream commercial-use licensing before use in a company/for-profit environment.
+- Role in Token Saver: current-code structural discovery, symbol-level source retrieval, relationships/blast radius, bounded code context, and related code-risk/navigation capabilities.
+- Licensing: **source-available under a dual-use license**, not conventional permissive open source. Upstream currently permits qualifying non-commercial use under its terms and requires a paid license for commercial/for-profit use, including internal tooling supporting revenue-generating operations. Always verify the current upstream license before use.
+- Token Saver does **not** copy, bundle, republish, or rebrand jCodeMunch.
+- Upstream setup can optionally write MCP/client configuration, agent prompt policies, watchers or enforcement hooks. Token Saver does not automatically adopt those mutations; enable them only when the host/project permits them and they do not block Token Saver's RAW/native verification path.
+- Upstream documents local index/cache state under `~/.code-index/` by default. Treat it as another source-derived copy of the repository and protect it accordingly.
+- Upstream documents secret-file exclusions/redaction, but raw source retrieval can still return secrets hardcoded in ordinary source. Keep project secret scanning and access controls authoritative.
+- Benchmark note: upstream publishes strong code-retrieval savings, including a reproducible grep-top-3 comparison. Treat those as retrieval-specific evidence, not a guarantee of whole-session savings; consult the current upstream methodology/caveats.
 
 ## RTK — Rust Token Killer
 CLI-output optimization reference provider.
