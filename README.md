@@ -7,8 +7,6 @@ A small, vendor-neutral efficiency pack for AI coding agents working on **large 
 > **Use less context. Keep the engineering signal.**  
 > **Complements, never collides.**
 
-Current stable release: **`@sudowhat/token-saver@0.1.0`** — published on npm and validated through a clean external-user install.
-
 ## 5-second view
 
 ```text
@@ -139,7 +137,7 @@ Token Saver combines five complementary ideas/tools, while keeping your actual p
 |---|---|---|
 | **Token discipline** | Caveman + selected Beeline principles | Avoiding unnecessary reads, tool calls and agent chatter |
 | **Semantic memory** | Supermemory | Finding relevant historical decisions, regressions and lessons |
-| **Code intelligence** | jCodeMunch | Fast symbol/AST-based navigation of large current codebases |
+| **Code intelligence** | jCodeMunch | Symbol/AST navigation, relationships, blast radius and bounded current-code retrieval |
 | **CLI output optimization** | RTK | Compressing noisy build/test/log output |
 | **Context assurance** | Entroly | Reducing large general model-bound context with recovery/provenance |
 
@@ -158,9 +156,42 @@ Conflicts are reduced by design because:
 - external providers are optional;
 - exact/canonical engineering evidence has a RAW path;
 - every optional provider has a native fallback;
+- provider-supplied planners, prompts, hooks and enforcement remain subordinate to Token Saver and project policy;
 - Token Saver does not require a specific AI vendor, IDE, MCP host, external tool, or version-control system.
 
 Token Saver cannot technically guarantee that every AI host will implement instruction precedence perfectly, so the policy is deliberately conservative: **when uncertain, yield to the project/native path.**
+
+## Provider boundary: jCodeMunch
+
+jCodeMunch is Token Saver's first reference provider for the **current-code** surface. Its core model fits Token Saver well: index the code structurally, locate the relevant symbol/relationship, retrieve only the necessary source, and keep the live project authoritative.
+
+Use its structural capabilities for things such as symbol retrieval, outlines, importers, call/class hierarchy, blast radius, changed symbols, AST/structural searches, hotspots and bounded code-context bundles when the installed version supports them.
+
+jCodeMunch has also grown into broader agent tooling: task-context assembly, turn planning, compact response encoding, risk checks, configuration auditing, prompt policies, watchers and optional enforcement hooks. Token Saver deliberately **does not give those features global ownership**.
+
+```text
+jCodeMunch structural code intelligence
+                 ↓
+        targeted code context
+                 ↓
+              model
+
+not
+
+jCodeMunch targeted context
+                 ↓
+      another compressor/planner
+                 ↓
+              model
+```
+
+A jCodeMunch planner/context assembler may optimize operations **inside the code-intelligence surface**. Cross-surface routing remains Token Saver's job. Provider prompt policies/hooks never outrank the target project's rules, and must not block a required RAW/native exact-source read.
+
+### Evidence without marketing inflation
+
+jCodeMunch currently publishes a reproducible benchmark reporting **96.4% fewer code-retrieval tokens** than its grep-top-3 baseline across 15 task runs, plus a separate production-codebase A/B report with smaller tool-layer savings. Token Saver treats those as provider-specific retrieval evidence—not as a promise that every complete coding session will be 96.4% cheaper.
+
+See the current upstream README/benchmark methodology for exact versions, caveats and reproducibility details: https://github.com/jgravelle/jcodemunch-mcp
 
 ## Routing rule
 
@@ -182,6 +213,8 @@ This prevents collisions such as RTK output being compressed again by Entroly, o
 Source being edited, exact diffs/changesets, security-sensitive evidence, test failures, machine-readable gates and current version-control/workspace state must remain exact whenever the decision depends on their exact contents.
 
 If any optional provider is missing, stale, unsupported, unsuitable or conflicting, the agent falls back to normal targeted search/read/build/test commands.
+
+For code indexes specifically, remember that index/cache state is another source-derived copy. Protect it like source code, verify freshness/coverage before absence or blast-radius conclusions, and keep the project's own secret scanning/access controls authoritative.
 
 ## Releases and versioning
 
@@ -251,6 +284,6 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the design principles and what make
 
 This Token Saver repository is MIT licensed.
 
-The referenced external tools retain their own licenses and commercial terms. In particular, verify **jCodeMunch's current upstream license before office/company use**; its upstream project currently uses a dual-use model with commercial licensing requirements.
+Referenced external tools retain their own licenses and commercial terms. In particular, **jCodeMunch is currently source-available under a dual-use license rather than a conventional permissive open-source license**. Its current upstream terms require a paid license for commercial/for-profit use. Token Saver references it as an optional provider and does not bundle or redistribute it.
 
-See [`THIRD_PARTY.md`](THIRD_PARTY.md) for links and notes.
+Always verify the current upstream terms for any provider before enabling it in your environment. See [`THIRD_PARTY.md`](THIRD_PARTY.md) for links and notes.
