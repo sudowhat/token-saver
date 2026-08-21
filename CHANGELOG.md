@@ -10,7 +10,7 @@ Token Saver follows [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-**Release classification:** MINOR — target next version: **0.2.0**.
+## [0.2.0] - 2026-08-21
 
 ### Code intelligence
 - Expanded the code-intelligence contract to cover structural relationships, blast radius, changed-symbol mapping, bounded code-context assembly, risk/refactoring preflight and freshness/coverage metadata.
