@@ -70,6 +70,21 @@ When instructions conflict:
 
 Optimization never authorizes weaker evidence.
 
+## Provider boundary
+
+An optional provider owns only the Token Saver surface assigned to it. A provider may expose its own planner, context assembler, compressor, prompt policy, config auditor, watcher, hook, or enforcement mechanism; those are **provider defaults**, not global Token Saver authority.
+
+Apply these rules:
+
+- a provider planner/context assembler may optimize work **inside its assigned surface** but does not take over cross-surface routing;
+- provider output that is already narrow and sufficient must not be passed through another optimization layer merely to shrink it again;
+- provider-supplied prompts/rules never outrank the authority order above;
+- do not automatically write or replace host/project agent-policy files, MCP/client configuration, hooks, or enforcement rules merely because a provider recommends them;
+- enable provider-side policy/config/hook mutations only when the current user/project permits them and they do not suppress a required RAW/native path;
+- if only an optional provider feature conflicts, suppress that feature and retain the provider's non-conflicting capabilities.
+
+This lets Token Saver consume a provider's strongest capabilities without inheriting unrelated orchestration policy.
+
 ## Conflict suppression
 
 Apply conflicts narrowly:
@@ -89,6 +104,7 @@ Examples:
 - Project forbids external MCP servers -> suppress MCP-backed providers; keep unrelated local Token Saver behavior.
 - Project requires security-sensitive source to be read directly -> structural tools may locate the code only if allowed; exact live source still decides.
 - Project forbids external semantic memory -> suppress that memory provider and use project-native history/search.
+- A provider wants to install a global "never use native Read/Grep" rule -> suppress that enforcement if it could block exact-source verification; structural retrieval may still be used.
 
 ## Graceful degradation
 
