@@ -7,7 +7,7 @@ A small, vendor-neutral efficiency pack for AI coding agents working on **large 
 > **Use less context. Keep the engineering signal.**  
 > **Complements, never collides.**
 
-Current stable release: **`@sudowhat/token-saver@0.1.0`** — published on npm and validated through a clean external-user install. Next intended MINOR is **0.2.0** (see `CHANGELOG.md` Unreleased).
+The npm badge above is the authoritative published version. See [`CHANGELOG.md`](CHANGELOG.md) for release history and unreleased changes.
 
 ## 5-second view
 
