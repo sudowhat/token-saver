@@ -29,8 +29,13 @@ A new tool/provider should answer:
 5. **How are freshness, provenance, exact recovery, security and privacy handled?**
 6. **What are its current licensing/commercial-use constraints?**
 7. **What evidence shows useful savings or better engineering outcomes on realistic projects?**
+8. **Does its installer or runtime write agent rules, MCP/client config, hooks, watchers, global prompts, or enforcement policy? If so, can those mutations remain optional and subordinate to the host project?**
+9. **Does it include its own planner, context assembler, memory, compressor, or router? If so, which parts stay inside the provider's assigned Token Saver surface and which would collide with an existing owner?**
+10. **Are its savings claims scoped correctly?** Retrieval/output savings must not be presented as whole-session savings unless the evidence actually measures whole sessions.
 
 If two tools solve the same problem, prefer a provider-neutral policy with one or more optional reference providers rather than stacking both blindly.
+
+A provider may grow over time. Re-evaluate its boundary when new releases expand into surfaces that Token Saver already assigns elsewhere. **Use the best new capability; do not inherit a new collision.**
 
 ## Core invariants
 
@@ -41,6 +46,8 @@ Please preserve these principles:
 - exact evidence stays exact when the decision depends on it;
 - retrieve narrowly before compressing;
 - one optimization/intelligence layer owns each context surface;
+- a provider owns only its assigned surface, even when it ships broader orchestration features;
+- provider-supplied prompts, planners, hooks and enforcement never outrank the host project's rules or Token Saver's cross-surface routing;
 - optional providers fail open to native project workflows;
 - no AI vendor, IDE, MCP host, external tool, or version-control system is mandatory;
 - third-party source code is not redistributed by this repository unless its license and the project explicitly allow it.
@@ -53,7 +60,9 @@ Keep pull requests focused and explain:
 - the proposed rule/provider change;
 - which Token Saver surface it belongs to;
 - why it does not collide with existing layers;
+- any installer/config/prompt/hook mutations the provider may make;
 - any security/privacy/licensing implications;
+- the scope of any benchmark or savings claim;
 - evidence or examples supporting the change when applicable.
 
 Small, clear improvements are preferred over broad rewrites.
